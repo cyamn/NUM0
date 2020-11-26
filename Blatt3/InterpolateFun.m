@@ -1,4 +1,5 @@
-function [P_f1,P_f2] = Aufgabe3a ()
+function p = InterpolateFun(a, b, n, f)
+  % Erstelle Wertetabelle von n Punkten Intervall [a,b] von f
   function [x,y] = createTable(a, b, n, f)
     x = linspace(a,b,n);
     y = zeros(1,n);
@@ -7,7 +8,8 @@ function [P_f1,P_f2] = Aufgabe3a ()
     endfor
   endfunction
 
-  function p = interpolate(a, b, n, f)
+  % Interpoliere
+  function p = interpolate(a, b, x, y)
     [x,y] = createTable(a, b, n, f);
     P = Lagrange(x,y);
     p = @(x) 0;
@@ -17,14 +19,6 @@ function [P_f1,P_f2] = Aufgabe3a ()
       p = p_i;
     endfor
   endfunction
-
-  N=[5 10 20];
-  f_1 = @(x) 1/(1+x.^2);
-  f_2 = @(x) sqrt(abs(x));
-  P_f1 = cell(3);
-  P_f2 = cell(3);
-  for n = 1 : length(N)
-    P_f1(n) = interpolate(-1, 1, N(n), f_1);
-    P_f2(n) = interpolate(-1, 1, N(n), f_2);
-  endfor
+  [x,y] = createTable(a, b, n, f);
+  p = interpolate(a, b, x, y);
 endfunction
