@@ -1,5 +1,8 @@
 % P_f1 Array mit den Interpolierenden als function handle. Genauso P_f2
-function [P_f1, P_f2] = Aufgabe3a()
+% 
+% In diesem Bsp. ist z.B. P_f1{1}(3) das Interpolationspolinom zu 5 Stützstellen
+% von der Funktion f_1 ausgewertet an x=3
+function [P_f1, P_f2] = Aufgabe4a()
   N=[5 10 20];
   f_1 = @(x) 1/(1+x.^2);
   f_2 = @(x) sqrt(abs(x));
